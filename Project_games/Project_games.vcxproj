@@ -152,11 +152,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="doodle.cpp" />
-    <ClCompile Include="jumpingPlayer.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="jumpingPlayer.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
