@@ -4,6 +4,7 @@
 #include<SFML/Audio.hpp>
 #include<sstream>
 #include<iostream>
+#include"Menu.h"
 
 #define windowWidth 320
 #define windowHeight 512
@@ -22,8 +23,14 @@ int main()
     srand(time(0));
     Clock clock1,clock2;
 
-    RenderWindow games(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><");
-    games.setFramerateLimit(60);
+    RenderWindow window(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><");
+    window.setFramerateLimit(60);
+    
+    //Menu window
+    Menu menu(windowWidth, windowHeight);
+    //cursor
+    Cursor clickCursor;
+    clickCursor.loadFromSystem(Cursor::Hand);
 
     //Textures
     Texture t1, t2, t3,t4;
@@ -120,14 +127,14 @@ int main()
     sPlat.setPosition((windowWidth - doodleWidth) / 2,windowHeight-normPlatHeight );
    
     //RenderGame
-    while (games.isOpen())
+    while (window.isOpen())
     {
         
         Event e;
-        while (games.pollEvent(e))
+        while (window.pollEvent(e))
         {
             if (e.type == Event::Closed)
-                games.close();
+                window.close();
         }
 
         Time elapsed1 = clock1.getElapsedTime();
@@ -148,7 +155,7 @@ int main()
                     bulletState = 1;
                 } 
             }
-            if (elapsed2.asSeconds() > 0.7) {
+            if (elapsed2.asSeconds() > 0.5) {
                 clock2.restart();
                 if (Keyboard::isKeyPressed(Keyboard::Key::W) && sPers.getPosition().y >= 200
                     && gamestate == 1 && sPers.getPosition().y <= windowWidth + doodleWidth && itemStack > 0) {
@@ -201,20 +208,24 @@ int main()
             }
         sPers.setPosition(x, y);
         enemy.setPosition(pEnemy[0].x, pEnemy[0].y);
-        games.draw(sBackground);
+       
+        menu.draw(window);
+        window.draw(sBackground);
+        
+        
         if (gamestate == 1) {
-            games.draw(scoreCounting);
-            games.draw(highJump);
+            window.draw(scoreCounting);
+            window.draw(highJump);
         }
        
-        games.draw(sPers);
+        window.draw(sPers);
         if (mark==1) {
-            games.draw(enemy);
+            window.draw(enemy);
         }
         //bullet moving
         if (bulletState == 1) {
             bullet.setPosition(sPers.getPosition().x+30, by);
-            games.draw(bullet);
+            window.draw(bullet);
             by -= 30;
             
         }
@@ -238,12 +249,12 @@ int main()
         highJump.setString(skill.str());
         //closing game by pressing on keyboard
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::X))
-            games.close();
+            window.close();
 
         for (int i = 0; i < maxP; i++)
         {
             sPlat.setPosition(plat[i].x, plat[i].y);
-            games.draw(sPlat);
+            window.draw(sPlat);
         }
       
         if (score >enemyScore&&sPers.getPosition().y>(windowWidth/2)) {
@@ -310,11 +321,11 @@ int main()
             }*/
             scoreCounting.setPosition(100, 250);
             scoreCounting.setCharacterSize(30);
-            games.draw(scoreCounting);
+            window.draw(scoreCounting);
             
         }
         //games.draw(endingScore);
-        games.display();
+        window.display();
     }
 
 
