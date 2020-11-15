@@ -152,8 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="doodle.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="jumpingPlayer.cpp" />
     <ClCompile Include="Source.cpp" />
+=======
+    <ClCompile Include="Menu.cpp" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jumpingPlayer.h" />
