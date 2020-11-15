@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="doodle.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="jumpingPlayer.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
