@@ -11,6 +11,7 @@ Menu::Menu(float width, float height) {
 	menu[0].setString("PLAY");
 	menu[0].setOrigin(menu[0].getLocalBounds().width / 2, menu[0].getLocalBounds().height / 2);
 	menu[0].setPosition(width / 2, height / (max_items + 1) * 1);
+	
 
 	menu[1].setFont(font);
 	menu[1].setFillColor(Color::Black);
@@ -31,6 +32,7 @@ Menu::Menu(float width, float height) {
 	menu[3].setCharacterSize(50);
 	menu[3].setString("QUIT");
 	menu[3].setOrigin(menu[3].getLocalBounds().width / 2, menu[3].getLocalBounds().height / 2);
+
 	menu[3].setPosition(width / 2, height / (max_items + 1) * 4);
 }
 Menu::~Menu(){
@@ -41,6 +43,7 @@ void Menu::draw(RenderWindow& window) {
 		window.draw(menu[i]);
 	}
 }
+
 void Menu::moveUp() {
 	if (selectedItem - 1 >= 0) {
 		menu[selectedItem].setFillColor(Color::Black);
@@ -50,8 +53,8 @@ void Menu::moveUp() {
 }
 void Menu::moveDown() {
 	if (selectedItem + 1 <=max_items ) {
-		menu[selectedItem].setFillColor(Color::Black);//à»ÅÕèÂ¹ÊÕµÑÇàÅ×Í¡·ÕèàÅ×Í¡ÍÂÙèãËéà»ç¹ÊÕ´Ó ¨Ò¡ÊÕà¢ÕÂÇ
-		selectedItem++;//àÅ×èÍ¹ä»µÑÇàÅ×Í¡¶Ñ´ä»
+		menu[selectedItem].setFillColor(Color::Black);//Ã Â»Ã…Ã•Ã¨Ã‚Â¹ÃŠÃ•ÂµÃ‘Ã‡Ã Ã…Ã—ÃÂ¡Â·Ã•Ã¨Ã Ã…Ã—ÃÂ¡ÃÃ‚Ã™Ã¨Ã£Ã‹Ã©Ã Â»Ã§Â¹ÃŠÃ•Â´Ã“ Â¨Ã’Â¡ÃŠÃ•Ã Â¢Ã•Ã‚Ã‡
+		selectedItem++;//Ã Ã…Ã—Ã¨ÃÂ¹Ã¤Â»ÂµÃ‘Ã‡Ã Ã…Ã—ÃÂ¡Â¶Ã‘Â´Ã¤Â»
 		menu[selectedItem].setFillColor(Color::Green);
 	}
 }

@@ -2,13 +2,10 @@
 #include <time.h>
 #include<Windows.h>
 #include<SFML/Audio.hpp>
-<<<<<<< Updated upstream
-=======
 #include<sstream>
 #include<iostream>
 #include"Menu.h"
 #include<vector>
->>>>>>> Stashed changes
 
 #define windowWidth 320
 #define windowHeight 512
@@ -22,151 +19,9 @@ struct point
 {
 	int x, y;
 };
-
-
 int main()
 {
-<<<<<<< Updated upstream
-    srand(time(0));
-    Clock clock1;
 
-    RenderWindow games(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><");
-    games.setFramerateLimit(60);
-
-    Texture t1, t2, t3,t4;
-    t1.loadFromFile("images/space-bck.png");
-    t2.loadFromFile("images/new-Normplat_1.png");
-    t3.loadFromFile("images/space-right.png");
-    t4.loadFromFile("images/enemy1.png");
-    
-    RectangleShape enemy;
-    enemy.setSize(Vector2f(60,62));
-    enemy.setTexture(&t4);
-    Sprite sBackground(t1), sPlat(t2), sPers(t3),sEnemy(t4);
-    
-
-
-
-
-    //sounds 
-    sf::SoundBuffer soundEffect;
-    soundEffect.loadFromFile("sound/VOLUME_pistol_shoot.wav");
-    sf::Sound shootEffect;
-    shootEffect.setBuffer(soundEffect);
-    sf::SoundBuffer jumpingSound;
-    jumpingSound.loadFromFile("sound/jump.wav");
-    sf::Sound jumpEffect;
-    jumpEffect.setBuffer(jumpingSound);
-    
-        //platform building
-    point plat[20];
-
-    for (int i = 0; i < 10; i++)
-    {
-      /*  if(plat[i].x)*/
-        plat[i].x = rand() % 252 ;//252 is the value of windowWidth - platformWidth
-        plat[i].y = rand() % windowHeight;
-    }
-
-    int x = 100, y = 100, h = 200;
-    float dx = 0, dy = 0;
-    int score=0;
-    
-    //start point
-    sPers.setPosition((windowWidth - doodleWidth) / 2, windowHeight - normPlatHeight-doodleHeight);
-    sPlat.setPosition((windowWidth - doodleWidth) / 2,windowHeight-normPlatHeight );
-    while (games.isOpen())
-    {
-        Event e;
-        while (games.pollEvent(e))
-        {
-            if (e.type == Event::Closed)
-                games.close();
-        }
-
-        Time elapsed1 = clock1.getElapsedTime();
-     
-        
-        //Key input
-        if (Keyboard::isKeyPressed(Keyboard::Key::D)) {
-            x += 3;
-        }
-        else if (Keyboard::isKeyPressed(Keyboard::Key::A) ) {
-            x -= 3;
-        }
-       /* if (sPers.getPosition().x >= 0 && sPers.getPosition().x <= games.getSize().x)
-        {
-            sPers.setPosition(x, y);
-        }
-        else if (sPers.getPosition().x > games.getSize().x)
-        {
-            sPers.setPosition(0, y);
-        }
-        else if (sPers.getPosition().x < 0)
-        {
-            sPers.setPosition(280, y);
-        }*/
-
-        
-        if (elapsed1.asSeconds() > 0.3) {
-            clock1.restart();
-            if (/*sf::Mouse::isButtonPressed(sf::Mouse::Left)*/Keyboard::isKeyPressed(Keyboard::Key::S)) {
-                shootEffect.play(); 
-            }
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::X)) 
-                games.close();
-
-       //jumping
-        dy += 0.2;// dy is used like an acceleration. When +, player moves down, when -, player moves up 
-        y += dy;// changing y value of player by plus dy. This is to make player move down
-        //if (y > 500) {
-        //    dy = -10;// checking if the player step on bottom of window or not, if he steps on the bottom he goes up
-        //    score++;
-        //}
-            
-        //ending games
-        if (sPers.getPosition().y > windowHeight+doodleHeight) {
-            games.close();
-        }
-            
-        
-        //create new platform when doodle step on higher platform
-        if (y < h)          
-            for (int i = 0; i < 10; i++)
-            {
-                y = h;
-                plat[i].y = plat[i].y - dy;
-                if (plat[i].y > windowHeight) {
-                    plat[i].y = 0; plat[i].x = rand() % 252; }
-            }
-        // if player step on platform, 
-        for (int i = 0; i < 10; i++)
-            if ((x + 50 > plat[i].x) && (x + 20 < plat[i].x + 68)
-            && (y + 70 > plat[i].y) && (y + 70 < plat[i].y + 14) && (dy > 0)) {
-               jumpEffect.play();
-                dy = -10;
-                score++;
-                printf("%d\n", score);
-            }
-        sPers.setPosition(x, y);
-        sEnemy.setPosition(100, 100);
-       
-        games.draw(sBackground);
-        games.draw(sPers);
-
-        for (int i = 0; i < 10; i++)
-        {
-
-            sPlat.setPosition(plat[i].x, plat[i].y);
-            games.draw(sPlat);
-        }
-        games.draw(enemy);
-        games.display();
-    }
-
-    return 0;
-=======
 	srand(time(0));
 	Clock clock1, clock2;
 
@@ -265,7 +120,7 @@ int main()
 	bool fallingSoundState = 0;
 	bool gamestate = 1;
 	bool bulletState = 0;
-	int itemStack = 3;// ¨Ó¹Ç¹¤ÃÑé§¡ÒÃãªéÊ¡ÔÅ´Õ´µÑÇ¢Í§µÑÇÅÐ¤Ã
+	int itemStack = 3;// Â¨Ã“Â¹Ã‡Â¹Â¤ÃƒÃ‘Ã©Â§Â¡Ã’ÃƒÃ£ÂªÃ©ÃŠÂ¡Ã”Ã…Â´Ã•Â´ÂµÃ‘Ã‡Â¢ÃÂ§ÂµÃ‘Ã‡Ã…ÃÂ¤Ãƒ
 	bool bull_en_state = 0;
 
 	int bx = x;
@@ -415,11 +270,11 @@ int main()
 				enemies.erase(enemies.begin() + i);
 				bulletState = 0;
 				mark = 0;
-				bull_en_state = 1;//bull_en_state ¤×Í Ê¶Ò¹Ð¡ÒÃª¹¡Ñ¹¢Í§bullet ¡Ñº enemy
+				bull_en_state = 1;//bull_en_state Â¤Ã—Ã ÃŠÂ¶Ã’Â¹ÃÂ¡Ã’ÃƒÂªÂ¹Â¡Ã‘Â¹Â¢ÃÂ§bullet Â¡Ã‘Âº enemy
 			}
 		}
 
-		//ÍÑ¹¹Õé¤×ÍÅÍ§à¢ÕÂ¹ÇèÒ ¶éÒbullet ¡Ñº enemy ·Ñº¡Ñ¹áÅéÇãËéãªéskillà¾ÔèÁä´é1¤ÃÑé§ áµèÂÑ§äÁèÊÒÁÒÃ¶á¡éºÑ¤·ÕèÇèÒ àÇÅÒÁÑ¹·Ñº¡Ñ¹áÅéÇ skill left äÁèä´éà¾ÔèÁá¤è1
+		//ÃÃ‘Â¹Â¹Ã•Ã©Â¤Ã—ÃÃ…ÃÂ§Ã Â¢Ã•Ã‚Â¹Ã‡Ã¨Ã’ Â¶Ã©Ã’bullet Â¡Ã‘Âº enemy Â·Ã‘ÂºÂ¡Ã‘Â¹Ã¡Ã…Ã©Ã‡Ã£Ã‹Ã©Ã£ÂªÃ©skillÃ Â¾Ã”Ã¨ÃÃ¤Â´Ã©1Â¤ÃƒÃ‘Ã©Â§ Ã¡ÂµÃ¨Ã‚Ã‘Â§Ã¤ÃÃ¨ÃŠÃ’ÃÃ’ÃƒÂ¶Ã¡Â¡Ã©ÂºÃ‘Â¤Â·Ã•Ã¨Ã‡Ã¨Ã’ Ã Ã‡Ã…Ã’ÃÃ‘Â¹Â·Ã‘ÂºÂ¡Ã‘Â¹Ã¡Ã…Ã©Ã‡ skill left Ã¤ÃÃ¨Ã¤Â´Ã©Ã Â¾Ã”Ã¨ÃÃ¡Â¤Ã¨1
 		if (bull_en_state == 1) {
 			itemStack++;
 			bull_en_state = 0;
@@ -525,5 +380,5 @@ int main()
 
 
 	return 0;
->>>>>>> Stashed changes
+
 }
