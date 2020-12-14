@@ -1,6 +1,4 @@
 #include "retry.h"
-
-
 using namespace sf;
 
 gameover::gameover(float width, float height) {
@@ -8,9 +6,6 @@ gameover::gameover(float width, float height) {
 	if (!font.loadFromFile("font/al-seana.ttf")) {
 
 	}
-
-
-
 	t.setSmooth(true);
 
 	choice.setTexture(&t);
@@ -31,18 +26,15 @@ gameover::gameover(float width, float height) {
 	choices[1].setString("MAIN MENU");
 	choices[1].setOrigin(choices[1].getLocalBounds().width / 2, choices[1].getLocalBounds().height / 2);
 	choices[1].setPosition(width / 2, height / (max_items_retry + 1) * 2);
-
 	
 }
 gameover::~gameover() {
-
 }
 void gameover::draw(RenderWindow& window) {
 	//window.draw(choices);
 	for (int i = 0; i < max_items_retry; i++) {
 		window.draw(choices[i]);
 	}
-
 }
 
 void gameover::moveUp2() {
