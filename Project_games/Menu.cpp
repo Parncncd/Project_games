@@ -32,7 +32,7 @@ Menu::Menu(float width, float height) {
 	tborder.setSmooth(true);
 	border.setTexture(&tborder);
 	border.setSize(Vector2f(tborder.getSize().x,tborder.getSize().y ));
-	border.setScale(2.3, 2.3);
+	border.setScale(1.3,1.3);
 	border.setPosition(150,40);
 
 
@@ -42,6 +42,14 @@ Menu::Menu(float width, float height) {
 	lightGrey.g = 224;
 	lightGrey.b = 224;
 
+	myName.setFont(font);
+	myName.setCharacterSize(20);
+	myName.setFillColor(darkBlue);
+	myName.setString("63010187 CHANANCHIDA SRITHONGDEE");
+	myName.setOrigin(myName.getLocalBounds().width / 2, myName.getLocalBounds().height / 2);
+	myName.setPosition(width / 2, 8 * height / 9);
+
+
 	menu[0].setFont(font);
 	menu[0].setFillColor(Color::White);
 	menu[0].setCharacterSize(50);
@@ -50,27 +58,22 @@ Menu::Menu(float width, float height) {
 	menu[0].setPosition(width / 2, height / (max_items + 1) * 1);
 
 
+	
+
 	menu[1].setFont(font);
 	menu[1].setFillColor(Color::Black);
 	menu[1].setCharacterSize(30);
-	menu[1].setString("HOW TO PLAY");
-	menu[1].setOrigin(menu[1].getLocalBounds().width / 2,( menu[1].getLocalBounds().height / 2)-20);
+	menu[1].setString("LEADER BOARD");
+	menu[1].setOrigin(menu[1].getLocalBounds().width / 2, (menu[1].getLocalBounds().height / 2)-20);
 	menu[1].setPosition(width / 2, height / (max_items + 1) * 2);
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(Color::Black);
 	menu[2].setCharacterSize(30);
-	menu[2].setString("LEADER BOARD");
-	menu[2].setOrigin(menu[2].getLocalBounds().width / 2, (menu[2].getLocalBounds().height / 2)-20);
+	menu[2].setString("QUIT");
+	menu[2].setOrigin(menu[2].getLocalBounds().width / 2, menu[2].getLocalBounds().height / 2);
+
 	menu[2].setPosition(width / 2, height / (max_items + 1) * 3);
-
-	menu[3].setFont(font);
-	menu[3].setFillColor(Color::Black);
-	menu[3].setCharacterSize(30);
-	menu[3].setString("QUIT");
-	menu[3].setOrigin(menu[3].getLocalBounds().width / 2, menu[3].getLocalBounds().height / 2);
-
-	menu[3].setPosition(width / 2, height / (max_items + 1) * 4);
 
 	direction1.setFont(font);
 	direction1.setString("PRESS ");
@@ -122,6 +125,8 @@ void Menu::draw(RenderWindow& window) {
 	window.draw(KeyUpDown);
 	window.draw(border);
 	window.draw(gamename);
+	window.draw(myName);
+
 	
 	for (int i = 0; i < max_items; i++) {
 		window.draw(menu[i]);
