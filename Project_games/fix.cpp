@@ -40,7 +40,7 @@ int main()
 	Clock clock1;//clock of s
 	Clock clock2;// clock of w
 	Clock clock3;//clock in name
-	RenderWindow window(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><");
+	RenderWindow window(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><",Style::Titlebar|Style::Close);
 	window.setFramerateLimit(60);
 	window.setPosition(Vector2i(400, 0));
 
