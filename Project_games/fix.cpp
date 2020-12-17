@@ -8,7 +8,7 @@
 #include<sstream>
 #include<iostream>
 #include<fstream>
-#include <string>
+#include<string>
 #include<utility>
 #include<algorithm>
 #include<vector>
@@ -40,7 +40,7 @@ int main()
 	Clock clock1;//clock of s
 	Clock clock2;// clock of w
 	Clock clock3;//clock in name
-	RenderWindow window(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><",Style::Titlebar|Style::Close);
+	RenderWindow window(VideoMode(windowWidth, windowHeight), "POOPLE JUMP ><", Style::Titlebar | Style::Close);
 	window.setFramerateLimit(60);
 	window.setPosition(Vector2i(400, 0));
 
@@ -139,7 +139,7 @@ int main()
 	tGoback.loadFromFile("images/go-back-left-arrow.png");
 	RectangleShape goback;
 	goback.setTexture(&tGoback);
-	goback.setSize(Vector2f(40,40));
+	goback.setSize(Vector2f(40, 40));
 
 
 
@@ -221,7 +221,7 @@ int main()
 	scoreboardText.setFillColor(darkBlue);
 	scoreboardText.setCharacterSize(40);
 	scoreboardText.setString("LEADERBOARD");
-	scoreboardText.setStyle(Text::Bold); 
+	scoreboardText.setStyle(Text::Bold);
 	scoreboardText.setLetterSpacing(2.3);
 	scoreboardText.setPosition(150, 40);
 
@@ -280,16 +280,6 @@ int main()
 	enter_direction.setFillColor(Color::White);
 	enter_direction.setCharacterSize(20);
 	enter_direction.setPosition(340, 645);
-
-
-
-
-
-
-
-
-
-	
 
 	//name 
 	sf::Text name;
@@ -415,7 +405,7 @@ Main:
 		else {
 			window.setMouseCursor(normalCursor);
 		}
-		//cout << "pausestate: " << pauseState << " " << " ,y: " << y << " " << endl;
+
 		Vector2i mousePosition = Mouse::getPosition(window);
 		deltatime = clock3.restart().asSeconds();
 		if (menuState == 1) {
@@ -423,7 +413,7 @@ Main:
 			menu.draw(window);
 			gamestate = 0;
 		}
-		
+
 		if (retryState == 1) {
 			menuState = 0;
 
@@ -434,9 +424,6 @@ Main:
 		Event e;
 		while (window.pollEvent(e))
 		{
-			/*int i = 0;
-			ifstream loadFile;
-			loadFile.open("Highscore.txt");*/
 			switch (e.type) {
 			case Event::KeyReleased:
 				switch (e.key.code) {
@@ -466,37 +453,45 @@ Main:
 
 							break;
 						case 1:
-							//leaderboard
-							//read files
-						/*	while (!loadFile.eof())
+
+
+						{chooseEffect.play();
+						scoreBoardState = 1;
+
+						//Lets try to dun here
+						ifstream loadFile;
+						loadFile.open("Highscore.txt");
+						while (!loadFile.eof())
+						{
+							string tempName;
+							int tempScore;
+							if (loadFile >> tempScore)
 							{
-								printf("tidja");
-								string tempName;
-								int tempScore;
-								loadFile >> tempName >> tempScore;
+								getline(loadFile, tempName);
 								ScoreBoard.push_back({ tempScore, tempName });
-								i++;
 							}
-							loadFile.close();
 
-							sort(ScoreBoard.begin(), ScoreBoard.end(), greater<pair<int, string>>());*/
-							chooseEffect.play();
-							scoreBoardState = 1;
-							std::cout << "Leaderboard has been pressed" << std::endl;
 
-							break;
+						}
+
+						loadFile.close();
+						std::sort(ScoreBoard.begin(), ScoreBoard.end(), greater<pair<int, string>>());
+
+						//end dun
+						std::cout << "Leaderboard has been pressed" << std::endl;
+
+						break;
+						}
 						case 2:
+						{
 							std::cout << "Quit has been pressed" << std::endl;
 							chooseEffect.play();
 
 							window.close();
 							break;
-					
-							
+						}
 						}
 					}
-
-
 
 					break;
 				case Keyboard::Escape:
@@ -510,27 +505,6 @@ Main:
 			}
 
 		}
-
-		//if (leaderBoardReadFile == 1) {
-		//	//int i = 0;
-		//	//ifstream loadFile;
-		//	//loadFile.open("Highscore.txt");
-		//	////read files
-		//	//while (!loadFile.eof())
-		//	//{
-		//	//	string tempName;
-		//	//	int tempScore;
-		//	//	loadFile >> tempName >> tempScore;
-		//	//	ScoreBoard.push_back({ tempScore, tempName });
-		//	//	i++;
-		//	//}
-		//	//loadFile.close();
-
-		//	//sort(ScoreBoard.begin(), ScoreBoard.end(), greater<pair<int, string>>());
-		//	leaderBoardReadFile = 0;
-		//}
-
-
 
 		if (gamestate == 1) {
 
@@ -556,7 +530,6 @@ Main:
 			Time elapsed1 = clock1.getElapsedTime();
 			Time elapsed2 = clock2.getElapsedTime();
 			Time elapsed3 = clock3.getElapsedTime();
-			//Time elapsed3 = clock3.getElapsedTime();
 
 			//Key input
 			if (playerstate == 1) {
@@ -687,8 +660,7 @@ Main:
 					&& (y + 70 > plat[i].y) && (y + 70 < plat[i].y + 14) && (dy > 0) && playerstate == 1) {
 					jumpEffect.play();
 					dy = -10;
-					/*enemyState = 0;
-					enemy.setPosition(windowWidth + 500, y);*/
+
 				}
 			if (playerMoveState == 1) {
 
@@ -743,7 +715,7 @@ Main:
 			}
 			//bullet hitting enemy
 			if (bullet.getGlobalBounds().intersects(enemy.getGlobalBounds()) && bull_en_state == 0 && enemyState == 1 && bulletState == 1) {
-				//enemy.setPosition(windowWidth + 50, windowHeight - 100);
+
 				pEnemy[0].x = 1000;
 				pEnemy[0].y = y;
 				bull_en_state = 1;
@@ -781,7 +753,7 @@ Main:
 				enemyState = 1;
 				pEnemy[0].x = rand() % (windowWidth - doodleWidth);
 				pEnemy[0].y = 0;
-				/*enemy.setPosition(pEnemy[0].x, pEnemy[0].y-dy);*/
+
 			}
 
 			//ending games
@@ -852,15 +824,11 @@ Main:
 
 
 			if (retryState == 1) {
-				
-				
 
-				cout << "Change name state : " << changenameState << endl;
-				cout << debounce << endl;
-				//cout << "Mouse::getPosition(window).x: " << Mouse::getPosition(window).x << "Mouse::getPosition(window).y: " << Mouse::getPosition(window).y << endl;
+
+
 
 				if (Mouse::isButtonPressed(Mouse::Button::Left) && Mouse::getPosition(window).x >= 314 && Mouse::getPosition(window).x <= 415 && Mouse::getPosition(window).y >= 310 && Mouse::getPosition(window).y <= 326 && changenameState == 0) {
-					cout << "			FUCKKKKKK				";
 					changenameState = 1;
 
 				}
@@ -899,19 +867,19 @@ Main:
 
 				if (changenameState == 0 and debounce < clock2.getElapsedTime().asSeconds()) {
 					Textbox.setFillColor(myDarkBlue);
-					//if (elapsed3.asSeconds() > 0.1) {
-						//clock3.restart();
-						if (Keyboard::isKeyPressed(Keyboard::Enter) && (gameover.getPressedItem2() == 0 || gameover.getPressedItem2() == 1)) {
-							//write score
-							string name;
-							name = nameplayer;
-							ofstream highscore;
-							highscore.open("Highscore.txt", ios::out | ios::app);
-							highscore << "\n" << name << " " << score;
-							highscore.close();
-							playagain = true;
-						}
-					//}
+
+					if (Keyboard::isKeyPressed(Keyboard::Enter) && (gameover.getPressedItem2() == 0 || gameover.getPressedItem2() == 1)) {
+
+						//write score
+						string name;
+						name = nameplayer;
+						ofstream highscore;
+						highscore.open("Highscore.txt", ios::out | ios::app);
+						highscore << "\n" << score << " " << name;
+						highscore.close();
+						playagain = true;
+					}
+
 				retry:
 					switch (e.key.code) {
 					case Keyboard::Up:
@@ -921,6 +889,12 @@ Main:
 						gameover.moveDown2();
 						break;
 					case Keyboard::Return:
+					{
+						while (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+						{
+							// wait until enter unpressed
+						}
+
 						switch (gameover.getPressedItem2()) {
 						case 0:
 							std::cout << "Play again has been pressed" << std::endl;
@@ -979,13 +953,6 @@ Main:
 							y = h;
 							debounce = 0;
 
-							////write
-							//if (leaderBoardWriteFile == 1) {
-							//highscore.open("Highscore.txt", ios::out | ios::app);
-							//highscore << "\n" << namewithscore << " " << score ;
-							//highscore.close();
-							//}
-							//leaderBoardWriteFile = 0;
 
 							playerstate = 1;
 
@@ -1019,9 +986,8 @@ Main:
 							enemyMove = 0;
 							pEnemy[0].x = rand() % (windowWidth - enemySizeX);
 							pEnemy[0].y = 0;
+
 							// set initial points of the platform
-
-
 							for (int i = 0; i <= 10; i += 2) {
 
 								plat[i].x = rand() % (windowWidth / 2);
@@ -1050,10 +1016,6 @@ Main:
 							x = windowWidth / 2 - (doodleWidth / 2);
 							y = h;
 							debounce = 0;
-							////write
-							//highscore.open("Highscore.txt", ios::out | ios::app);
-							//highscore << "\n" << namewithscore << " " << score;
-							//highscore.close();
 
 
 							playAgainState = 0;
@@ -1062,9 +1024,10 @@ Main:
 
 
 							break;
-
 						}
-						break;
+
+					}
+					break;
 					}
 
 				}
@@ -1096,36 +1059,48 @@ Main:
 		}
 		if (playagain == true) {
 			if (Keyboard::isKeyPressed(Keyboard::Enter) && menu.getPressedItem() == 1) {
+
 				int i = 0;
 				ifstream loadFile;
 				loadFile.open("Highscore.txt");
 				while (!loadFile.eof())
 				{
-					printf("tidja");
 					string tempName;
 					int tempScore;
-					loadFile >> tempName >> tempScore;
-					ScoreBoard.push_back({ tempScore, tempName });
+					if (loadFile >> tempScore)
+					{
+						getline(loadFile, tempName);
+						ScoreBoard.push_back({ tempScore, tempName });
+					}
 					i++;
 				}
-				loadFile.close();
 
+				loadFile.close();
 				sort(ScoreBoard.begin(), ScoreBoard.end(), greater<pair<int, string>>());
+				for (int i = 0; i < ScoreBoard.size(); i++)
+				{
+					std::cout << ScoreBoard[i].first << " " << ScoreBoard[i].second << std::endl;
+				}
 				playagain = false;
 			}
 		}
 		if (scoreBoardState == 1) {
+			//dun here please
 			window.clear();
 			window.draw(sBackground);
 			window.draw(scoreboardText);
-			goback.setPosition(5,5);
+			goback.setPosition(5, 5);
 			window.draw(goback);
 			cnt = 0;
 
+			if (Mouse::isButtonPressed(Mouse::Button::Left) && Mouse::getPosition(window).x >= 5 && Mouse::getPosition(window).x <= 45 && Mouse::getPosition(window).y >= 5 && Mouse::getPosition(window).y <= 50) {
 
-			if (Mouse::isButtonPressed(Mouse::Button::Left) && Mouse::getPosition(window).x >= 5 && Mouse::getPosition(window).x <= 45 && Mouse::getPosition(window).y >= 5 && Mouse::getPosition(window).y <= 50 ) {
-				
 				scoreBoardState = 0;
+				//delete score board
+				while (ScoreBoard.size() != 0)
+				{
+					ScoreBoard.pop_back();
+				}
 
 			}
 			for (vector<pair<int, string>>::iterator k = ScoreBoard.begin(); k != ScoreBoard.end(); k = k + 1)
@@ -1143,15 +1118,8 @@ Main:
 			}
 		}
 
-
 		window.display();
 	}
-
-
-
-
-	
-
 
 	return 0;
 }

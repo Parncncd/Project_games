@@ -155,7 +155,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="random.cpp" />
     <ClCompile Include="retry.cpp" />
-    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h" />

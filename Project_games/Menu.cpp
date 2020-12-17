@@ -49,16 +49,12 @@ Menu::Menu(float width, float height) {
 	myName.setOrigin(myName.getLocalBounds().width / 2, myName.getLocalBounds().height / 2);
 	myName.setPosition(width / 2, 8 * height / 9);
 
-
 	menu[0].setFont(font);
 	menu[0].setFillColor(Color::White);
 	menu[0].setCharacterSize(50);
 	menu[0].setString("PLAY");
 	menu[0].setOrigin(menu[0].getLocalBounds().width / 2, (menu[0].getLocalBounds().height / 2)-50);
 	menu[0].setPosition(width / 2, height / (max_items + 1) * 1);
-
-
-	
 
 	menu[1].setFont(font);
 	menu[1].setFillColor(Color::Black);

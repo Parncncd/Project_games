@@ -1,15 +1,51 @@
-
-parn  200
-Boss 4000
-Mild 1000
-kki 1565
-plda 0
- 0
- 0
- 0
- 0
- 0
- 0
- 0
- 0
- 0
+4 wd
+0 tis
+1013 BB
+300 KMITL
+397 a
+4586 nowja
+11173 parn
+112 parn
+477 pop
+8424 parn
+1494 
+1552 parn
+5464 Test
+3403 Test
+5725 Mild
+3458 Pingpong
+5657 Pol
+12072 TheBest
+10924 IamHere
+12022 ParnKa
+7290 ParnKa
+1540 ParnKa
+8822 ParnKa
+7465 ParnKa
+599 ParnKa
+7184 ParnKa
+12456 MyNaii
+1417 
+1417 
+1417 
+1417 
+1417 
+1417 
+1417 
+1648 Jj
+1648 Jj
+1648 Jj
+1648 Jj
+2901 kkkk
+2901 kkkk
+2901 kkkk
+2901 kkkk
+2901 kkkk
+2901 kkkk
+2901 kkkk
+10718 ImTrying
+10718 ImTrying
+10718 ImTrying
+10718 ImTrying
+10718 ImTrying
+10718 ImTrying

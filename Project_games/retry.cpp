@@ -46,22 +46,12 @@ gameover::gameover(float width, float height) {
 	your.setPosition((width/3)+15, (height / 3) );
 	your.setStyle(Text::Bold);
 
-
-	/*yourHighScore.setFont(font);
-	yourHighScore.setFillColor(Color::Black);
-	yourHighScore.setCharacterSize(30);
-	yourHighScore.setString("your high score: ");
-	yourHighScore.setPosition((width/3)-35, 300-30);
-	yourHighScore.setStyle(Text::Bold);*/
-
-
 	yourName.setFont(font);
 	yourName.setFillColor(Color::Black);
 	yourName.setCharacterSize(30);
 	yourName.setString("your name: ");
 	yourName.setPosition((width/2)-85, 380-75);
 	yourName.setStyle(Text::Bold);
-
 
 	presstochange.setFont(font);
 	presstochange.setFillColor(darkRed);
